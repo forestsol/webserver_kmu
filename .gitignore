@@ -401,5 +401,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
+.idea/workspace.xml
 # End of https://www.toptal.com/developers/gitignore/api/windows,python,django,pycharm
