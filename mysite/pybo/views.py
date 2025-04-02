@@ -1,4 +1,28 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
-def index(request):
-    return HttpResponse("안녕하세요 pybo에 오신 것을 환영합니다 by 성창민_20203081.")
+def user_login(request):
+    if request.method == 'POST':
+        user = authenticate(
+            username=request.POST['username'],
+            password=request.POST['password']
+        )
+        if user:
+            login(request, user)
+            return redirect('/write/')
+    return render(request, 'login.html')
+
+@login_required
+def write_post(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        print(f"글 작성됨: {title}, {content}")
+        return HttpResponse("게시글 작성 완료")
+    return render(request, 'write.html')
+
+
+def csrf_attack(request):
+    return render(request, 'attack.html')
