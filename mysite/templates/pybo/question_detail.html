@@ -1,0 +1,11 @@
+<h1>{{question.subject}}</h1>
+
+<div>
+  {{question.content}}
+</div>
+
+<form action="{% url 'pybo:answer_create' question.id %}" method = "post">
+  {% csrf_token %}  <!--POST 요청 시 csrf_token 안달면 오류-->
+  <textarea name="content" id="content" rows="15"></textarea>  <!--텍스트를 입력하는 텍스트 창-->
+  <input type="submit" value="답변등록">  <!--답변 등록 버튼-->
+</form>

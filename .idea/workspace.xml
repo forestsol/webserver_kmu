@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b866801-1887-45a3-b71f-60a15a832d2a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mysite/pybo/templates/attack.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/pybo/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/pybo/templates/write.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webserver_kmu.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webserver_kmu.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/midterm_exam.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/templates/pybo/question_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/templates/pybo/question_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/config/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/pybo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/pybo/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/pybo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/pybo/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/pybo/templates/attack.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/pybo/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/pybo/templates/write.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/pybo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/pybo/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/pybo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/pybo/views.py" afterDir="false" />
     </list>
@@ -66,7 +70,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -97,6 +101,8 @@
       <workItem from="1743525490673" duration="8000" />
       <workItem from="1743592355028" duration="115000" />
       <workItem from="1743592495212" duration="4160000" />
+      <workItem from="1745654219218" duration="5695000" />
+      <workItem from="1745668088962" duration="10393000" />
     </task>
     <servers />
   </component>

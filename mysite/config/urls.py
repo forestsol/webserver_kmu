@@ -20,7 +20,4 @@ from pybo import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pybo/', include('pybo.urls')),
-    path('login/', views.user_login),
-    path('write/', views.write_post),
-    path('attack/', views.csrf_attack),
 ]
