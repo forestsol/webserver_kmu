@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h5 class ="my-3 border-bottom pb-2">질문등록</h5>
+  <form method="post">
+    <!--<form method="post"></form> 내부에 있는 것들은, post할 때 실행한다는 뜻이 아님. post할 때 전달할 것들이고, 여기 안에다 적어줘라. 라고 빈 설문지를 내미는 것과 같음.-->
+    <!--이 빈 설문지에 적힌것들을 post 요청할 때 특정 url로 보낼 수 있는데(action을 지정하면 가능), 그냥 안적어버리면 현재 페이지의 URL에 다시 요청을 보내게 됨.-->
+    <!-- 그니까 이미 이전에 get 과 post 두가지로 동작하는 view가 있는데, get으로 그 URL에 이미 들어와 있는 것임.-->
+    <!-- submit 버튼을 누르면, 적힌 설문지를 받아서 잘 포장한 다음 정해진 url로 보냄(post 함) -->
+
+    {%csrf_token%}
+
+
+    <!--여기 아래 form은 question_create 함수에서 전달된 빈 폼 QuestionForm 객체임-->
+
+    <!-- 오류표시 Start -->
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+        {% for field in form %}
+        {% if field.errors %}
+        <div>
+            <strong>{{ field.label }}</strong>
+            {{ field.errors }}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <!-- 오류표시 End -->
+
+    <div class="mb-3">
+        <label for="subject" class="form-label">제목</label>
+        <input type="text" class="form-control" name="subject" id="subject"
+               value="{{ form.subject.value|default_if_none:'' }}">
+    </div>
+
+    <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <textarea class="form-control" name="content"
+                  id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+    </div>
+
+    <!--{{form.as_p}} 는 forms.py의 폼에 정의된 subject와 content 속성에 해당하는 HTML코드를 자동으로 생성해줌-->
+    <button type="submit" class="btn btn-primary">저장하기</button> <!-- submit 버튼 이거 누르면 post 하는 거임 -->
+  </form>
+</div>
+
+
+{% endblock %}
