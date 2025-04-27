@@ -219,3 +219,37 @@ def answer_create(request, question_id):
   - 리다이렉트해서 POST 창에서 벗어남
 - 검증에 실패하면
   - 다시 빈 폼을 렌더링하여 올바르게 입력하도록 유도.
+
+---
+### Paginator
+```python
+def index(request):
+    page = request.GET.get('page', '1')  # request.GET : GET 요청에 포함된 쿼리 파라미터들을 의미
+    # .get(키, 기본값)메서드 : 쿼리 파라미터에서 키에 해당하는 값을 가져옴. 없으면 기본값 부여.
+    question_list = Question.objects.order_by('-create_date')
+    paginator = Paginator(question_list, 10)   # Paginator(리스트, 한 페이지에 보여줄 갯수)메서드 
+    page_obj = paginator.get_page(page)  # .get_page(페이지 번호)메서드 
+    
+    context = {'question_list' : page_obj}
+    return render(request, 'pybo/question_list.html', context)
+```
+- Paginator(리스트, 한 페이지에 보여줄 갯수)메서드
+  - : 리스트 형태(리스트, 쿼리셋, 등 리스트처럼 동작하는 것)의 데이터를 페이지 단위로 나누는 메서드임
+  - 입력은 위에 두개
+  - 출력은 Paginator객체를 반환함
+- Paginator객체.get_page(페이지번호)메서드
+  - : 특정 페이지 번호에 해당하는 Page 데이터 묶음을 반환해줌
+  - 입력은 페이지 번호
+  - 출력은 해당 페이지에 들어있는 객체 묶음
+
+---
+
+### django.contrib.auth
+```python
+# urls.py 에서 바로 auth_views의 'LoginView'로 연결.
+path('login/', auth_views.LoginView.as_view(template_name='common/login.html'), name='login'),
+```
+
+- django.contrib.auth 인증할 때 username과 password 항목을 넣어서 보내줘야함.
+- django.contrib.auth는 로그인에 성공하면 기본적으로 /accounts/profile/이라는 URL로 리다이렉트함.
+  - settings.py 에서 **LOGIN_REDIRECT_URL = '/'** 로 설정을 바꿀 수 있음

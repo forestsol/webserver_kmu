@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseNotAllowed
 from .models import Question, Answer
@@ -6,8 +7,14 @@ from .forms import QuestionForm, AnswerForm
 
 
 def index(request):
+    page = request.GET.get('page', '1')  # 페이지
     question_list = Question.objects.order_by('-create_date')
-    context = {'question_list' : question_list} # context라는 딕셔너리를 만들기. # context = {'question_list': [질문1, 질문2, 질문3, ...]}
+    paginator = Paginator(question_list, 10)  # 페이지당 10개씩 보여주기
+    page_obj = paginator.get_page(page)
+
+    # context = {'question_list' : question_list} # context라는 딕셔너리를 만들기. # context = {'question_list': [질문1, 질문2, 질문3, ...]}
+    context = {'question_list': page_obj}
+
     return render(request, 'pybo/question_list.html', context) # render는 (request, 템플릿경로, 딕셔너리) 를 받아야함.
 
 def detail(request, question_id):
