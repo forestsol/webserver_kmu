@@ -48,7 +48,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sub&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/fores/Documents/Github/capstone-2025-40&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -80,6 +80,8 @@
       <workItem from="1742820932554" duration="4330000" />
       <workItem from="1743517800445" duration="472000" />
       <workItem from="1743523110723" duration="3141000" />
+      <workItem from="1745811621655" duration="208000" />
+      <workItem from="1745812900966" duration="512000" />
     </task>
     <servers />
   </component>
