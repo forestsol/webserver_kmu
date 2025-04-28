@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html> <!-- html5 문서라고 브라우저에게 알려주는 선언문 -->
+<html lang="ko">
+
+
+<head>
+    <!-- base.html을 상속해서 쓰는 html들이 공유해서 사용하는 head 내용 Start -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- pybo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Hello, pybo!</title>
+    <!-- base.html을 상속해서 쓰는 html들이 공유해서 사용하는 head 내용 End -->
+</head>
+
+<body>
+<!-- base.html을 상속해서 쓰는 html들이 공유해서 사용하는 body 내용 Start -->
+<!-- 네비게이션바 -->
+{% include "navbar.html" %}
+<!-- base.html을 상속해서 쓰는 html들이 공유해서 사용하는 body 내용 End -->
+
+
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
+<!-- 자바스크립트 Start -->
+{% block script %}
+{% endblock %}
+<!-- 자바스크립트 End -->
+</body>
+
+</html>
