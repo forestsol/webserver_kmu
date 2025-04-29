@@ -253,3 +253,43 @@ path('login/', auth_views.LoginView.as_view(template_name='common/login.html'), 
 - django.contrib.auth 인증할 때 username과 password 항목을 넣어서 보내줘야함.
 - django.contrib.auth는 로그인에 성공하면 기본적으로 /accounts/profile/이라는 URL로 리다이렉트함.
   - settings.py 에서 **LOGIN_REDIRECT_URL = '/'** 로 설정을 바꿀 수 있음
+
+---
+## @classmethod
+- 클래스 수준에서 동작하는 메서드를 만들 때 사용하는 데코레이터
+- 클래스 수준에서 동작한다는 건, 클래스가 인스턴스를 만들지 않아도 호출할 수 있다는 뜻.
+- 보통 메서드는 self를 사용해 인스턴스를 받지만, classmethod는 cls를 받음.
+  - 그래서 인스턴스 없이도 클래스를 다룰 수 있는 것임.
+- Django 에서만 쓰는 건 아니고, Python 전반에서 쓰이는 기능임.
+  - Django에서는 주로 특정 조건에 따라 객체를 생성하는 커스텀 메서드를 만들 때 자주 씀.
+  - Django에서 @classmethod를 쓰면, 모델 클래스 단에서 직접 데이터에 접근하거나 조작하는 메서드를 만들 수 있음.
+
+### 1. 그래서 장고에서 이걸 왜 씀?
+- @classmethod로 모델 클래스에 "쿼리 메서드"를 만들어 심어두면?
+  - 뷰에서 자주 쓰는 복잡한 쿼리 로직을 뷰마다 직접 적을 필요 없이 
+  - 메서드만 호출해서 데이터 셋을 가져올 수 있음.
+- 얻는 이점
+  - 뷰 코드가 깔끔해지고, 얇아짐(좋은 아키텍쳐라고 함)
+  - 모델 중심 설계가 가능해짐(장고는 원래 모델 중심 설계를 한다고 함)
+  - 재사용성이 높아짐
+  - 테스트하기도 쉬워짐
+
+### 2. 예시
+```python
+# models.py
+class Order(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20)
+
+    @classmethod
+    def recent_orders(cls):
+        return cls.objects.order_by('-created_at')[:10]
+```
+```python
+# views.py
+def recent_orders_view(request):
+    orders = Order.recent_orders()
+    return render(request, 'orders/recent_list.html', {'orders': orders})
+```
+- 뷰는 Order.recent_orders() 만 호출하면 됨.
+- 복잡한 쿼리 호출은{.objects.order_by()} 모델 안에 숨김.
