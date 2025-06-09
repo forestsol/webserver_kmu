@@ -20,7 +20,7 @@
                 <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
                 {{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}
             </td>
-            <td class="text-start">
+            <td class="text-left">
                 <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
                 {% if question.answer_set.count > 0 %}
                 <span class="text-danger small mx-2">{{ question.answer_set.count }}</span>
